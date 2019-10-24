@@ -1,0 +1,36 @@
+{
+  "name": "co-plsv-front-infr",
+  "version": "0.0.1",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint --ext .jsx,.js src --ext .yaml,.yml .",
+    "prettier-check": "prettier -c --ignore-path .gitignore \"**/*.{css,html,js,json,md,yaml,yml}\"",
+    "prettify": "prettier --write --ignore-path .gitignore \"**/*.{css,html,js,json,md,yaml,yml}\""
+      
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://Sergio.Plata@bitbucket-latam.aws.lmig.com/scm/anpolserv/co-plsv-front-infr.git"
+  },
+  "eslintConfig": {
+      "extends": "@serverless/eslint-config/node",
+      "root": true
+  },
+  "author": "sergio alejandro plata",
+  "license": "ISC",
+  "devDependencies": {
+    "@serverless/eslint-config": "^1.2.0",
+    "eslint": "^6.5.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.4.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "^7.16.0",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "git-list-updated": "^1.2.1",
+    "prettier": "^1.18.2"
+  }
+}

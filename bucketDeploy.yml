@@ -1,0 +1,9 @@
+resources:
+    PLSVDeploymentBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${self:custom.project}-${self:provider.stage}
+        AccessControl: PublicRead
+        WebsiteConfiguration:
+          IndexDocument: index.html
+          ErrorDocument: index.html

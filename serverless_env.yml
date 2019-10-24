@@ -1,0 +1,13 @@
+project: co-plsv
+dev:
+  arnCertificate: arn:aws:acm:us-east-1:710809157942:certificate/efa38afc-a5bc-4f37-b726-a2bb69cc14e2
+  domain: policy-servicingdev.libertyseguros.co
+  devDependencies: false
+nonprod:
+  arnCertificate: "arn:aws:acm:us-east-1:038612146925:certificate/add499c0-d731-473c-85d4-7e86613b6b72"
+  domain: "policy-servicingnonprod.libertyseguros.co"
+  devDependencies: true
+prod:
+  arnCertificate: "arn:aws:acm:us-east-1:626569123605:certificate/12e9c4f6-f45a-4e95-acd6-d03d11a95bf3"
+  domain: "policy-servicing.libertyseguros.co"
+  devDependencies: true

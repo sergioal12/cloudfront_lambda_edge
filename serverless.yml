@@ -1,0 +1,72 @@
+# Welcome to Serverless!
+#
+# This file is the main config file for your service.
+# It's very minimal at this point and uses default values.
+# You can always add more config options for more control.
+# We've included some commented out config examples here.
+# Just uncomment any of them to get that config option.
+#
+# For full config options, check the docs:
+#    docs.serverless.com
+#
+# Happy Coding!
+
+service: co-plsv-front-infr # NOTE: update this with your service name
+
+
+# You can pin your service to only deploy with a specific Serverless version
+# Check out our docs for more details
+# frameworkVersion: "=X.X.X"
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+  stackTags:
+   lm_troux_uid: FCD414E7-8323-40B8-81DD-BECE80BA6112
+   lm_app: 'CO POLICY SERVICING AWS'
+   lm_app_env: ${opt:stage, 'dev'}
+   lm_sbu: INTL
+   intl_country: co
+   intl_region: latam
+
+# you can overwrite defaults here
+  stage: ${opt:stage, 'dev'} 
+  region: us-east-1
+custom: ${file(serverless_env.yml)}
+  
+
+
+# you can add packaging information here
+package:
+  excludeDevDependencies: ${self:custom.${self:provider.stage}.devDependencies}
+
+
+# you can add CloudFormation resource templates here
+resources:
+  Resources:
+  - ${file(cloudfront-origin-access-identity.yml)}
+  - ${file(s3-bucket-policy.yml)}
+  - ${file(bucketDeploy.yml)}
+  - ${file(cloudfrontDeploy.yml)}
+    
+Outputs:
+  - CloudFrontOriginAccessIdentity:
+      Description: s3 canonical user
+      Value: !GetAtt [CloudFrontOriginAccessIdentityResource, S3CanonicalUserId]
+      Export:
+        Name: CloudFrontOriginAccessIdentityResource-${self:provider.stage}
+  - WebAppS3BucketResourceWebsiteUrl:
+      Description: URL for website hosted on S3
+      Value: !GetAtt [PLSVDeploymentBucket, WebsiteURL]
+      Export:
+        Name: WebAppS3BucketResourceWebsiteUrl-${self:provider.stage}
+  - WebAppS3BucketResourceDomainNameSecureURL:
+      Description: Name of S3 bucket to hold website content
+      Value: !Join ['', ['https://', !GetAtt [PLSVDeploymentBucket, DomainName]]]
+      Export:
+        Name: WebAppS3BucketResourceDomainNameSecureURL-${self:provider.stage}
+  - CloudFrontDistributionResourceDomainName:
+      Description: Name of S3 bucket to hold website content
+      Value: !Join ['', ['https://', !GetAtt [CloudFrontDistributionResource, DomainName]]]
+      Export:
+        Name: CloudFrontDistributionResourceDomainName-${self:provider.stage}

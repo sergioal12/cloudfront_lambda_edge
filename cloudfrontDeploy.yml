@@ -1,0 +1,35 @@
+resources:
+  PLSVCloudfrontDistributionResource:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig: 
+        Comment: bucket deployment Distribution
+        CustomErrorResponses:
+          - ErrorCode: 404
+            ErrorCachingMinTTL: 1
+            ResponseCode: 200
+            ResponsePagePath: /index.html
+        DefaultCacheBehavior:
+          AllowedMethods:
+            - GET
+            - HEAD
+        ForwardedValues:
+          Cookies:
+            Forward: none
+          QueryString: false
+        TargetOriginId: WebApp
+        ViewerProtocolPolicy: redirect-to-https
+      DefaultRootObject: index.html
+      Enabled: true
+      Origins:
+        - DomainName: ${self:custom.project}-${self:provider.stage}.s3.amazonaws.com
+          Id: WebApp
+          S3OriginConfig:
+            OriginAccessIdentity: !Join ['', ['origin-access-identity/cloudfront/', !Ref 'CloudFrontOriginAccessIdentityResource']]
+      Aliases:
+        - ${self:custom.${self:provider.stage}.domain}
+      ViewerCertificates:
+        AcmCertificateArn: ${self:custom.${self:provider.stage}.arnCertificate}
+        MinimumProtocolVersion: TLSv1.2_2018
+        SslSupportMethod: sni-only
+

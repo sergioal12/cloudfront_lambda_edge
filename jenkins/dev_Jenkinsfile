@@ -17,6 +17,7 @@ node('linux') {
             sh 'export SLS_DEBUG=true'
             sh 'dir'
             sh 'ls'
+            sh 'pwd'
             sh "sls deploy -v --stage ${env.APPENV.replace('_', '')}" // Values: dev, non_prod and prod
          }
          withSonarQubeEnv('sonarqube') {

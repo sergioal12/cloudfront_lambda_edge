@@ -43,7 +43,7 @@ package:
 
 # you can add CloudFormation resource templates here
 resources:
-  - Resources:
+  Resources:
   - ${file(cloudfront-origin-access-identity.yml)}
   - ${file(s3-bucket-policy.yml)}
   - ${file(bucketDeploy.yml)}

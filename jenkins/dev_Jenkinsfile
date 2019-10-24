@@ -9,6 +9,7 @@ node('linux') {
       sh 'sls --version'
       sh 'pwd'
       sh 'ls'
+      sh 'ls'
    }
    stage('Build') {
       deployToDev {

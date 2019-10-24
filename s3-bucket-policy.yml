@@ -1,5 +1,5 @@
 Resources:
-  WebAppS3BucketPolicyResource:
+  PLSVDeploymentBucketPolicyResource:
     Type: AWS::S3::BucketPolicy
     Properties:
       # The name of the Amazon S3 Bucket to which the policy applies

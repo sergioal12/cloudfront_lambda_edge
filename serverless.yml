@@ -28,6 +28,13 @@ provider:
    lm_sbu: INTL
    intl_country: co
    intl_region: latam
+  tags:
+   lm_troux_uid: FCD414E7-8323-40B8-81DD-BECE80BA6112
+   lm_app: 'CO POLICY SERVICING AWS'
+   lm_app_env: ${opt:stage, 'dev'}
+   lm_sbu: INTL
+   intl_country: co
+   intl_region: latam
 
 # you can overwrite defaults here
   stage: ${opt:stage, 'dev'} 

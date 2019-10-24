@@ -1,4 +1,4 @@
-resources:
+Resources:
     PLSVDeploymentBucket:
       Type: AWS::S3::Bucket
       Properties:

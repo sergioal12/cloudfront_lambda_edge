@@ -1,4 +1,4 @@
-resources:
+Resources:
   PLSVCloudfrontDistributionResource:
     Type: AWS::CloudFront::Distribution
     Properties:

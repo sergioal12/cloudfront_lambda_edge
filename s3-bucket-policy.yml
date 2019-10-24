@@ -1,4 +1,4 @@
-Resources:
+resources:
   WebAppS3BucketPolicyResource:
     Type: AWS::S3::BucketPolicy
     Properties:

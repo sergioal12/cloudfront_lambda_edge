@@ -13,12 +13,12 @@ Resources:
           AllowedMethods:
             - GET
             - HEAD
-        ForwardedValues:
-          Cookies:
-            Forward: none
-          QueryString: false
-        TargetOriginId: WebApp
-        ViewerProtocolPolicy: redirect-to-https
+          ForwardedValues:
+            Cookies:
+              Forward: none
+            QueryString: false
+          TargetOriginId: WebApp
+          ViewerProtocolPolicy: redirect-to-https
         DefaultRootObject: index.html
         Enabled: true
         Origins:
@@ -28,7 +28,7 @@ Resources:
               OriginAccessIdentity: !Join ['', ['origin-access-identity/cloudfront/', !Ref 'CloudFrontOriginAccessIdentityResource']]
         Aliases:
           - ${self:custom.${self:provider.stage}.domain}
-        ViewerCertificates:
+        ViewerCertificate:
           AcmCertificateArn: ${self:custom.${self:provider.stage}.arnCertificate}
           MinimumProtocolVersion: TLSv1.2_2018
           SslSupportMethod: sni-only

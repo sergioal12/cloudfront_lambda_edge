@@ -2,7 +2,7 @@
 @Library('utils@master') _
 node('linux') {
    stage('Preparation') {
-      git credentialsId: 'intl_gituser', url: 'https://intl_gituser@bitbucket-latam.aws.lmig.com/scm/anpolserv/co-plsv-front-infr.git', branch: 'release'
+      git credentialsId: 'intl_gituser', url: 'https://intl_gituser@bitbucket-latam.aws.lmig.com/scm/anpolserv/co-plsv-front-infr.git', branch: 'develop'
       sh 'npm --version'
       sh 'aws --version'
       sh 'npm install'

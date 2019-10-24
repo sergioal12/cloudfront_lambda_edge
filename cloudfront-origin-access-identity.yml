@@ -1,5 +1,4 @@
-resources:
-  CloudFrontOriginAccessIdentityResource:
+ CloudFrontOriginAccessIdentityResource:
     Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
     Properties:
       CloudFrontOriginAccessIdentityConfig:

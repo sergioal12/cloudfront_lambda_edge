@@ -32,7 +32,7 @@ Resources:
           AcmCertificateArn: ${self:custom.${self:provider.stage}.arnCertificate}
           MinimumProtocolVersion: TLSv1.2_2018
           SslSupportMethod: sni-only
-        Tags:
+      Tags:
         -
           Key: Name
           Value: PLSVCloudFrontLibertyBucket

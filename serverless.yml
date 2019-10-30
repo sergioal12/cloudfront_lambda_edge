@@ -76,4 +76,4 @@ resources:
         Description: Name of S3 bucket to hold website content
         Value: !Join ['', ['https://', !GetAtt [PLSVCloudfrontDistributionResource, DomainName]]]
         Export:
-          Name: CloudFrontDistributionResourceDomainName-${self:provider.stage}
+          Name: PLSVCloudFrontDistributionResourceDomainName-${self:provider.stage}

@@ -56,23 +56,23 @@ resources:
   - ${file(./bucketDeploy.yml)}
   - ${file(./cloudfrontDeploy.yml)}
     
-Outputs:
-  - CloudFrontOriginAccessIdentity:
+  - Outputs:
+    CloudFrontOriginAccessIdentity:
       Description: s3 canonical user
       Value: !GetAtt [CloudFrontOriginAccessIdentityResource, S3CanonicalUserId]
       Export:
         Name: CloudFrontOriginAccessIdentityResource-${self:provider.stage}
-  - WebAppS3BucketResourceWebsiteUrl:
+    WebAppS3BucketResourceWebsiteUrl:
       Description: URL for website hosted on S3
       Value: !GetAtt [PLSVDeploymentBucket, WebsiteURL]
       Export:
         Name: WebAppS3BucketResourceWebsiteUrl-${self:provider.stage}
-  - WebAppS3BucketResourceDomainNameSecureURL:
+    WebAppS3BucketResourceDomainNameSecureURL:
       Description: Name of S3 bucket to hold website content
       Value: !Join ['', ['https://', !GetAtt [PLSVDeploymentBucket, DomainName]]]
       Export:
         Name: WebAppS3BucketResourceDomainNameSecureURL-${self:provider.stage}
-  - CloudFrontDistributionResourceDomainName:
+    CloudFrontDistributionResourceDomainName:
       Description: Name of S3 bucket to hold website content
       Value: !Join ['', ['https://', !GetAtt [CloudFrontDistributionResource, DomainName]]]
       Export:

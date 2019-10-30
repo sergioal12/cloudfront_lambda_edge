@@ -32,4 +32,26 @@ Resources:
           AcmCertificateArn: ${self:custom.${self:provider.stage}.arnCertificate}
           MinimumProtocolVersion: TLSv1.2_2018
           SslSupportMethod: sni-only
+        Tags:
+        -
+          Key: Name
+          Value: PLSVCloudFrontLibertyBucket
+        -
+          Key: lm_troux_uid
+          Value: FCD414E7-8323-40B8-81DD-BECE80BA6112
+        -
+          Key: lm_app
+          Value: 'CO POLICY SERVICING AWS'
+        -
+          Key: lm_app_env
+          Value: ${self:provider.stage}
+        -
+          Key: lm_sbu
+          Value: INTL
+        -
+          Key: intl_country
+          Value: co
+        -
+          Key: intl_region
+          Value: latam
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 @Library('utils@master') _
 import com.lmig.intl.cloud.jenkins.util.EnvConfigUtil
-def ARTIFACT_VERSION = "${MAJOR_VERSION}.${BUILD_NUMBER}";
+def ARTIFACT_VERSION = "1.${BUILD_NUMBER}";
 node('linux') {
    stage('Preparation') {
       git credentialsId: 'intl_gituser', url: 'https://intl_gituser@bitbucket-latam.aws.lmig.com/scm/anpolserv/co-plsv-front-infr.git', branch: 'nonprod'

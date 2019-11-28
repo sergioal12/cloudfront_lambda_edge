@@ -7,3 +7,8 @@ Resources:
         WebsiteConfiguration:
           IndexDocument: index.html
           ErrorDocument: index.html
+    PLSVInfraDeploymentBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: Infra-${self:custom.project}-${self:provider.stage}
+        AccessControl: PublicRead

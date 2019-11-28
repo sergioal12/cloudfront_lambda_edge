@@ -11,6 +11,7 @@ Resources:
             # For each resource, specified the operations that will allow (or deny)
             Action:
               - "s3:GetObject"
+              - "s3:PutObject"
             # What the effect will be when the user request the specific ations (could be allow or deny)
             Effect: "Allow"
             Resource: !Join ['', ['arn:aws:s3:::', '${self:custom.project}-${self:provider.stage}', '/*']]

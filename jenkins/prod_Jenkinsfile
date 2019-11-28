@@ -1,8 +1,14 @@
 #!/usr/bin/env groovy
 @Library('utils@master') _
 node('linux') {
+   stage('Unzip Files'){
+       sh 'unzip -l co-plsv-front-infr.zip'
+   }
+   stage('Proceed to Prod'){
+       input message: 'Proceed with Deploy to prod?', ok: 'Yes'
+   }
    stage('Preparation') {
-      git credentialsId: 'intl_gituser', url: 'https://intl_gituser@bitbucket-latam.aws.lmig.com/scm/anpolserv/co-plsv-front-infr.git', branch: 'nonprod'
+      //git credentialsId: 'intl_gituser', url: 'https://intl_gituser@bitbucket-latam.aws.lmig.com/scm/anpolserv/co-plsv-front-infr.git', branch: 'nonprod'
       sh 'npm --version'
       sh 'aws --version'
       sh 'npm install'
@@ -26,11 +32,4 @@ node('linux') {
       }
    }
 
-   stage('Zip Files && Artifactory upload') {
-			//zip dir: '', glob: '', zipFile: 'intl-co-plsv-infr-dev.zip'
-         sh 'cd ..'
-         sh 'zip -r co-plsv-front-infr.zip co-plsv-front-infr -x co-plsv-front-infr/jenkins/dev_Jenkinsfile co-plsv-front-infr/jenkins/preprod_Jenkinsfile co-plsv-front-infr/.serverless co-plsv-front-infr/.git/**\*'
-			def artifacts = ['intl-co-plsv-infr-dev.zip']		
-		   artifactoryUploadFiles files:artifacts,version:ARTIFACT_VERSION,packageType:'npm',appName:'co-plsv-infra'            
-   }
 }

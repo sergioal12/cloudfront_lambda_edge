@@ -29,7 +29,7 @@ node('linux') {
    stage('Zip Files && Artifactory upload') {
 			//zip dir: '', glob: '', zipFile: 'intl-co-plsv-infr-dev.zip'
          sh 'cd ..'
-         sh 'zip -r co-plsv-front-infr.zip co-plsv-front-infr -x co-plsv-front-infr/jenkins/dev_Jenkinsfile co-plsv-front-infr/jenkins/preprod_Jenkinsfile co-plsv-front-infr/.serverless co-plsv-front-infr/.git/**\*'
+         sh 'zip -r co-plsv-front-infr.zip co-plsv-front-infr -x co-plsv-front-infr/jenkins/dev_Jenkinsfile co-plsv-front-infr/jenkins/preprod_Jenkinsfile co-plsv-front-infr/.serverless co-plsv-front-infr/.git/**'
 			def artifacts = ['intl-co-plsv-infr-dev.zip']		
 		   artifactoryUploadFiles files:artifacts,version:ARTIFACT_VERSION,packageType:'npm',appName:'co-plsv-infra'            
    }

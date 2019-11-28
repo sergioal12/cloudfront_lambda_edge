@@ -54,6 +54,7 @@ resources:
   - ${file(cloudfront-origin-access-identity.yml)}
   - ${file(./s3-bucket-policy.yml)}
   - ${file(./bucketDeploy.yml)}
+  - ${file(./InfrBucketDeployment.yml)}
   - ${file(./cloudfrontDeploy.yml)}
     
   - Outputs:

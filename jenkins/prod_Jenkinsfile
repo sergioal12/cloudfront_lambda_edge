@@ -4,9 +4,9 @@ node('linux') {
    stage('Unzip Files'){
        sh 'unzip -l co-plsv-front-infr.zip'
    }
-   stage('Proceed to Prod'){
+   /*stage('Proceed to Prod'){
        input message: 'Proceed with Deploy to prod?', ok: 'Yes'
-   }
+   }**/
    stage('Preparation') {
       //git credentialsId: 'intl_gituser', url: 'https://intl_gituser@bitbucket-latam.aws.lmig.com/scm/anpolserv/co-plsv-front-infr.git', branch: 'nonprod'
       sh 'npm --version'
@@ -18,7 +18,6 @@ node('linux') {
       sh 'ls'
    }
    stage('Build') {
-      deployToNonProd {
          withAWS(credentials:getAWSCredentialID(environment:"${env.APPENV}"), region:'us-east-1') {
             sh 'export SLS_DEBUG=true'
             sh 'dir'
@@ -28,8 +27,7 @@ node('linux') {
          }
          withSonarQubeEnv('sonarqube') {
             // TODO sh 'sonar-scanner -Dsonar.projectKey=andino-flex-mailer -Dsonar.projectName=andino-flex-mailer -Dsonar.projectVersion=0.0.1 -Dsonar.sources=src'
-         }
-      }
+         }   
    }
 
 }

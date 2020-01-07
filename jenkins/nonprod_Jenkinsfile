@@ -27,16 +27,4 @@ node('linux') {
          }
       }
    }
-
-   stage('Zip Files && Artifactory upload') {
-			//zip dir: '', glob: '', zipFile: 'intl-co-plsv-infr-dev.zip'
-           sh 'cd ..'
-           sh 'pwd'
-           sh 'ls'
-           sh 'zip -r co-plsv-front-infr.zip . -x co-plsv-front-infr/jenkins/dev_Jenkinsfile co-plsv-front-infr/jenkins/preprod_Jenkinsfile co-plsv-front-infr/.serverless co-plsv-front-infr/.git/**'
-           sh 'pwd'
-           sh 'ls'
-			  def artifacts = ['co-plsv-front-infr.zip']		
-		     artifactoryUploadFiles files:artifacts,version:ARTIFACT_VERSION,packageType:'npm',appName:'co-plsv-infra'              
-   }
 }

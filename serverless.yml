@@ -56,6 +56,9 @@ resources:
   - ${file(./bucketDeploy.yml)}
   - ${file(./InfrBucketDeployment.yml)}
   - ${file(./cloudfrontDeploy.yml)}
+  - ${file(./iam_role_edge.yml)}
+  - ${file(./edge_lambda.yml)}
+  - ${file(./lambd_edge_version.yml)}
     
   - Outputs:
       PLSVCloudFrontOriginAccessIdentity:

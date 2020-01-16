@@ -17,13 +17,13 @@ node('linux') {
            sh 'pwd'
            sh 'ls'
 			  def artifacts = ['co-plsv-front-infr.zip']		
-		     artifactoryUploadFiles files:artifacts,version:ARTIFACT_VERSION,packageType:'npm',appName:'co-plsv-infr'              
+		     artifactoryUploadFiles files:artifacts,version:ARTIFACT_VERSION,packageType:'npm',appName:'co-plsv-front-infr'              
    }
    stage('Artifactory Promoted to Prod') {
 				promoteToProd(
-					email:'carlos.unate@Libertycolombia.com',
+					email:'andres.gallardo@Libertycolombia.com',
 					promoteArtifact: true,
-					appName:'co-plsv-infr',
+					appName:'co-plsv-front-infr',
 					packageType:'npm',
 					version: ARTIFACT_VERSION,
 					singleJenkinsfilePattern: true

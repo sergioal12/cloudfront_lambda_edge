@@ -19,6 +19,10 @@ Resources:
             QueryString: false
           TargetOriginId: WebApp
           ViewerProtocolPolicy: redirect-to-https
+          LambdaFunctionAssociations:
+              - EventType: viewer-response
+                LambdaFunctionARN: !GetAtt LambdaEdgeVersion.FunctionArn
+          SmoothStreaming: false
         DefaultRootObject: index.html
         Enabled: true
         Origins:

@@ -23,7 +23,7 @@ node('linux') {
             sh 'dir'
             sh 'ls'
             sh 'pwd'
-            sh "sls deploy -v --stage ${env.APPENV.replace('_', '')}" // Values: dev, non_prod and prod
+            sh "sls deploy -v --stage prod" // Values: dev, non_prod and prod
          }
          withSonarQubeEnv('sonarqube') {
             // TODO sh 'sonar-scanner -Dsonar.projectKey=andino-flex-mailer -Dsonar.projectName=andino-flex-mailer -Dsonar.projectVersion=0.0.1 -Dsonar.sources=src'

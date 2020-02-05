@@ -22,7 +22,7 @@ Resources:
           LambdaFunctionAssociations:
               - EventType: viewer-response
                 LambdaFunctionARN:
-                  'Fn::GetAtt': LambdaEdgeVersion.FunctionArn
+                  !Ref LambdaEdgeVersion
           SmoothStreaming: false
         DefaultRootObject: index.html
         Enabled: true

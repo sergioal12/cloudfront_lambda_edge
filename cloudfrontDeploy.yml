@@ -21,7 +21,7 @@ Resources:
           ViewerProtocolPolicy: redirect-to-https
           LambdaFunctionAssociations:
               - EventType: viewer-response
-                LambdaFunctionARN: !GetAtt LambdaEdgeVersion.FunctionArn
+                LambdaFunctionARN: !Ref LambdaEdgeVersion.FunctionArn
           SmoothStreaming: false
         DefaultRootObject: index.html
         Enabled: true

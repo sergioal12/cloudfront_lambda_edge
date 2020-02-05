@@ -55,10 +55,12 @@ resources:
   - ${file(./s3-bucket-policy.yml)}
   - ${file(./bucketDeploy.yml)}
   - ${file(./InfrBucketDeployment.yml)}
-  - ${file(./cloudfrontDeploy.yml)}
+  - ${file(./lambd_edge_version.yml)}
   - ${file(./iam_role_edge.yml)}
   - ${file(./edge_lambda.yml)}
-  - ${file(./lambd_edge_version.yml)}
+  - ${file(./cloudfrontDeploy.yml)}
+  
+  
     
   - Outputs:
       PLSVCloudFrontOriginAccessIdentity:

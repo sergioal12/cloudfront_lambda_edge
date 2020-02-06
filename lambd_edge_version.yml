@@ -3,4 +3,4 @@ Resources:
       Type: AWS::Lambda::Version
       DeletionPolicy: Retain
       Properties:
-        FunctionName: !GetAtt LambdaEdge.Arn
+        FunctionName: !Ref LambdaEdgePlsv

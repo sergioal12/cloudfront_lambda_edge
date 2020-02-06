@@ -20,6 +20,7 @@ node('linux') {
             sh 'pwd'
             sh "sls deploy -v --stage ${env.APPENV.replace('_', '')}" // Values: dev, non_prod and prod
             sh 'aws cloudfront create-invalidation  --distribution-id     E3MQFJTWKC42C1 --paths "/*"'
+            
          }
          withSonarQubeEnv('sonarqube') {
             // TODO sh 'sonar-scanner -Dsonar.projectKey=andino-flex-mailer -Dsonar.projectName=andino-flex-mailer -Dsonar.projectVersion=0.0.1 -Dsonar.sources=src'

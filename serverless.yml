@@ -88,4 +88,4 @@ resources:
          Value: !Ref LambdaEdgeVersion
       CloudfrontLambdaAssociation:
          Description: lambda association
-         Value: !GetAtt [PLSVCloudfrontDistributionResource, DistributionConfig.DefaultCacheBehavior.LambdaFunctionAssociations]
+         Value: !GetAtt PLSVCloudfrontDistributionResource.DistributionConfig.DefaultCacheBehavior.LambdaFunctionAssociations

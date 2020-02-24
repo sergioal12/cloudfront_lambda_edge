@@ -86,6 +86,3 @@ resources:
       PLSVLambdaEdgeVersion:
          Description: lambda edge version
          Value: !Ref LambdaEdgeVersion
-      CloudfrontLambdaAssociation:
-         Description: lambda association
-         Value: !GetAtt [PLSVCloudfrontDistributionResource, OriginRequestLambdaVersionARN]

@@ -85,4 +85,6 @@ resources:
            Name: PLSVCloudFrontDistributionResourceDomainName-${self:provider.stage}
       - PLSVLambdaEdgeVersion:
          Description: lambda edge version
-         Value: !Ref LambdaEdgeVersion 
+         Value: !Ref LambdaEdgeVersion
+         Export:
+          Name: PLSVLambdaEdgeVersion

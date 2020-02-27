@@ -20,7 +20,7 @@ Resources:
           TargetOriginId: WebApp
           ViewerProtocolPolicy: redirect-to-https
           LambdaFunctionAssociations:
-              - EventType: viewer-response
+              - EventType: origin-response
                 LambdaFunctionARN: !Ref LambdaEdgeVersion
           SmoothStreaming: false
         DefaultRootObject: index.html

@@ -19,6 +19,7 @@ node('linux') {
             sh 'ls'
             sh 'pwd'
             sh "sls deploy -v --stage ${env.APPENV.replace('_', '')}" // Values: dev, non_prod and prod
+            sh "aws lambda list-versions-by-function --function-name co-plsv-front-infr-dev-LambdaEdgePlsv-HQZNYFZ4JGDG --query 'Versions[-1].FunctionArn' --output text > queryLambdaVersionArn.txt"
             sh 'aws cloudfront create-invalidation  --distribution-id     E3MQFJTWKC42C1 --paths "/*"'
             
          }

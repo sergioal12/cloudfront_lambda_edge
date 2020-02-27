@@ -21,6 +21,7 @@ service: co-plsv-front-infr # NOTE: update this with your service name
 provider:
   name: aws
   runtime: nodejs10.x
+  versionFunctions: false
   stackTags:
    lm_troux_uid: FCD414E7-8323-40B8-81DD-BECE80BA6112
    lm_app: 'CO POLICY SERVICING AWS'

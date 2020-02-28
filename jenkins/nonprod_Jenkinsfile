@@ -22,7 +22,7 @@ node('linux') {
             sh 'pwd'
             sh "sls deploy -v --stage ${env.APPENV.replace('_', '')}" // Values: dev, non_prod and prod
             sh 'aws cloudfront get-distribution-config --id EIT6NP7FSXY32'
-            //sh 'aws lambda publish-version --function-name arn:aws:lambda:us-east-1:038612146925:function:co-plsv-front-infr-nonprod-LambdaEdgePlsv-1EVRIIC7NWAN'
+            sh 'aws lambda publish-version --function-name arn:aws:lambda:us-east-1:038612146925:function:co-plsv-front-infr-nonprod-LambdaEdgePlsv-1EVRIIC7NWAN'
             sh 'aws lambda list-versions-by-function --function-name arn:aws:lambda:us-east-1:038612146925:function:co-plsv-front-infr-nonprod-LambdaEdgePlsv-1EVRIIC7NWAN'
             sh 'aws cloudfront create-invalidation  --distribution-id     EIT6NP7FSXY32 --paths "/*"'
          }

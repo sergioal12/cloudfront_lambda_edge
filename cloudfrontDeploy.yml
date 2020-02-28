@@ -21,7 +21,7 @@ Resources:
           ViewerProtocolPolicy: redirect-to-https
           LambdaFunctionAssociations:
               - EventType: origin-response
-                LambdaFunctionARN: arn:aws:lambda:us-east-1:038612146925:function:co-plsv-front-infr-nonprod-LambdaEdgePlsv-1EVRIIC7NWAN:2
+                LambdaFunctionARN: arn:aws:lambda:us-east-1:038612146925:function:co-plsv-front-infr-nonprod-LambdaEdgePlsv-1EVRIIC7NWAN:3
 #                LambdaFunctionARN: !Ref LambdaEdgeVersion
           SmoothStreaming: false
         DefaultRootObject: index.html

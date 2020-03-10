@@ -21,7 +21,6 @@ Resources:
           ViewerProtocolPolicy: redirect-to-https
           LambdaFunctionAssociations:
               - EventType: origin-response
- #               LambdaFunctionARN: arn:aws:lambda:us-east-1:038612146925:function:co-plsv-front-infr-nonprod-LambdaEdgePlsv-1EVRIIC7NWAN:3
                 LambdaFunctionARN: !Ref LambdaEdgeVersion
           SmoothStreaming: false
         DefaultRootObject: index.html
@@ -40,23 +39,20 @@ Resources:
       Tags:
         -
           Key: Name
-          Value: PLSVCloudFrontLibertyBucket
+          Value: any-name
         -
-          Key: lm_troux_uid
+          Key: uid
           Value: FCD414E7-8323-40B8-81DD-BECE80BA6112
         -
-          Key: lm_app
-          Value: 'CO POLICY SERVICING AWS'
+          Key: app
+          Value: 'app name'
         -
-          Key: lm_app_env
+          Key: app_env
           Value: ${self:provider.stage}
         -
-          Key: lm_sbu
-          Value: INTL
-        -
-          Key: intl_country
+          Key: country
           Value: co
         -
-          Key: intl_region
+          Key: region
           Value: latam
 

@@ -2,7 +2,7 @@
 @Library('utils@master') _
 node('linux') {
    stage('Preparation') {
-      git credentialsId: 'intl_gituser', url: 'https://intl_gituser@bitbucket-latam.aws.lmig.com/scm/anpolserv/co-plsv-front-infr.git', branch: 'develop'
+      git credentialsId: 'any_credentials', url: 'https://github.com/sergioal12/cloudfront_lambda_edge.git', branch: 'develop'
       sh 'npm --version'
       sh 'aws --version'
       sh 'npm install'
@@ -19,9 +19,9 @@ node('linux') {
             sh 'ls'
             sh 'pwd'
             sh "sls deploy -v --stage ${env.APPENV.replace('_', '')}" // Values: dev, non_prod and prod
-            sh "aws lambda list-versions-by-function --function-name co-plsv-front-infr-dev-LambdaEdgePlsv-HQZNYFZ4JGDG --query 'Versions[-1].FunctionArn'"
-            sh 'aws cloudfront get-distribution-config --id E3MQFJTWKC42C1'
-            sh 'aws cloudfront create-invalidation  --distribution-id     E3MQFJTWKC42C1 --paths "/*"'
+            sh "aws lambda list-versions-by-function --function-name your-function-name-LambdaEdgePlsv-xxxxxx --query 'Versions[-1].FunctionArn'"
+            sh 'aws cloudfront get-distribution-config --id xxxxxxxxx'
+            sh 'aws cloudfront create-invalidation  --distribution-id     xxxxxxxxx --paths "/*"'
             
          }
          withSonarQubeEnv('sonarqube') {

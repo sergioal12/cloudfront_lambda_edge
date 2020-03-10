@@ -2,13 +2,12 @@
 @Library('utils@master') _
 node('linux') {
    stage('Unzip Files'){
-       sh 'unzip -l co-plsv-front-infr.zip'
+       sh 'unzip -l any-project-name.zip'
    }
    /*stage('Proceed to Prod'){
        input message: 'Proceed with Deploy to prod?', ok: 'Yes'
    }**/
    stage('Preparation') {
-      //git credentialsId: 'intl_gituser', url: 'https://intl_gituser@bitbucket-latam.aws.lmig.com/scm/anpolserv/co-plsv-front-infr.git', branch: 'nonprod'
       sh 'npm --version'
       sh 'aws --version'
       sh 'npm install'

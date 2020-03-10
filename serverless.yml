@@ -11,7 +11,7 @@
 #
 # Happy Coding!
 
-service: co-plsv-front-infr # NOTE: update this with your service name
+service: any-name # NOTE: update this with your service name
 
 
 # You can pin your service to only deploy with a specific Serverless version
@@ -20,26 +20,21 @@ service: co-plsv-front-infr # NOTE: update this with your service name
 
 provider:
   name: aws
-  runtime: nodejs10.x
+  runtime: nodejs10.x #nodejs12.x
   versionFunctions: true
   stackTags:
-   lm_troux_uid: FCD414E7-8323-40B8-81DD-BECE80BA6112
-   lm_app: 'CO POLICY SERVICING AWS'
-   lm_app_env: ${opt:stage, 'dev'}
-   lm_sbu: INTL
+   app: 'any name for your app'
+   app_env: ${opt:stage, 'dev'}
    intl_country: co
    intl_region: latam
   tags:
-   lm_troux_uid: FCD414E7-8323-40B8-81DD-BECE80BA6112
-   lm_app: 'CO POLICY SERVICING AWS'
-   lm_app_env: ${opt:stage, 'dev'}
-   lm_sbu: INTL
+   app: 'any name for your app'
+   app_env: ${opt:stage, 'dev'}
    intl_country: co
    intl_region: latam
-
 # you can overwrite defaults here
   stage: ${opt:stage, 'dev'} 
-  region: us-east-1
+  region: us-east-1 #default region
 custom: ${file(serverless_env.yml)}
   
 

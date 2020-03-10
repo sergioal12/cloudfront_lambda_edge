@@ -1,0 +1,33 @@
+#!/usr/bin/env groovy
+@Library('utils@master') _
+import com.lmig.intl.cloud.jenkins.util.EnvConfigUtil
+def ARTIFACT_VERSION = "1.${BUILD_NUMBER}";
+node('linux') {
+   stage('Preparation') {
+      git credentialsId: 'any_credentials', url: 'https://github.com/sergioal12/cloudfront_lambda_edge.git', branch: 'nonprod'
+      sh 'npm --version'
+      sh 'aws --version'
+      sh 'npm install'
+      sh 'sls --version'
+      sh 'pwd'
+      sh 'ls'
+      sh 'ls'
+   }
+   stage('Build') {
+      deployToNonProd {
+         withAWS(credentials:getAWSCredentialID(environment:"${env.APPENV}"), region:'us-east-1') {
+            sh 'export SLS_DEBUG=true'
+            sh 'dir'
+            sh 'ls'
+            sh 'pwd'
+            sh "sls deploy -v --stage ${env.APPENV.replace('_', '')}" // Values: dev, non_prod and prod
+            sh 'aws cloudfront get-distribution-config --id xxxxxxxxxxx'
+            sh 'aws lambda list-versions-by-function --function-name arn:aws:lambda:us-east-1:000000000:function:any-functionname-LambdaEdgePlsv-xxxxxxxx'
+            sh 'aws cloudfront create-invalidation  --distribution-id     xxxxxxxx --paths "/*"'
+         }
+         withSonarQubeEnv('sonarqube') {
+            // TODO sh 'sonar-scanner -Dsonar.projectKey=andino-flex-mailer -Dsonar.projectName=andino-flex-mailer -Dsonar.projectVersion=0.0.1 -Dsonar.sources=src'
+         }
+      }
+   }
+}

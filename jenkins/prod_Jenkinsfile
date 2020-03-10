@@ -1,0 +1,32 @@
+#!/usr/bin/env groovy
+@Library('utils@master') _
+node('linux') {
+   stage('Unzip Files'){
+       sh 'unzip -l any-project-name.zip'
+   }
+   /*stage('Proceed to Prod'){
+       input message: 'Proceed with Deploy to prod?', ok: 'Yes'
+   }**/
+   stage('Preparation') {
+      sh 'npm --version'
+      sh 'aws --version'
+      sh 'npm install'
+      sh 'sls --version'
+      sh 'pwd'
+      sh 'ls'
+      sh 'ls'
+   }
+   stage('Build') {
+         withAWS(credentials:getAWSCredentialID(environment:"${env.APPENV}"), region:'us-east-1') {
+            sh 'export SLS_DEBUG=true'
+            sh 'dir'
+            sh 'ls'
+            sh 'pwd'
+            sh "sls deploy -v --stage prod" // Values: dev, non_prod and prod
+         }
+         withSonarQubeEnv('sonarqube') {
+            // TODO sh 'sonar-scanner -Dsonar.projectKey=andino-flex-mailer -Dsonar.projectName=andino-flex-mailer -Dsonar.projectVersion=0.0.1 -Dsonar.sources=src'
+         }   
+   }
+
+}

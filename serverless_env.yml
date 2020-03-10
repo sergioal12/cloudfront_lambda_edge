@@ -1,0 +1,13 @@
+project: project-name
+dev:
+  arnCertificate: arn for certificate stored in certificate manager - dev vpc
+  domain: domain name
+  devDependencies: false
+nonprod:
+  arnCertificate: arn for certificate stored in certificate manager - nonprod vpc
+  domain: domain name
+  devDependencies: true
+prod:
+  arnCertificate: arn for certificate stored in certificate manager - nonprod vpc
+  domain: domain name
+  devDependencies: true

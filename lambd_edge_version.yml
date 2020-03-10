@@ -1,0 +1,6 @@
+Resources:
+  LambdaEdgeVersion:
+      Type: AWS::Lambda::Version
+      DeletionPolicy: Retain
+      Properties:
+        FunctionName: !Ref LambdaEdgePlsv

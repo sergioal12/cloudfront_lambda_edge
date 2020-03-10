@@ -1,0 +1,21 @@
+Resources:
+  PLSVDeploymentBucketPolicyResource:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      # The name of the Amazon S3 Bucket to which the policy applies
+      Bucket: ${self:custom.project}-${self:provider.stage}
+      # A policy document containing permissions to add to the specified Bucket
+      PolicyDocument:
+        Statement:
+          -
+            # For each resource, specified the operations that will allow (or deny)
+            Action:
+              - "s3:GetObject"
+              - "s3:PutObject"
+            # What the effect will be when the user request the specific ations (could be allow or deny)
+            Effect: "Allow"
+            Resource: !Join ['', ['arn:aws:s3:::', '${self:custom.project}-${self:provider.stage}', '/*']]
+            # The account or user who is allowed access to the actions and resources in the statement
+            Principal:
+              CanonicalUser:
+                !GetAtt [CloudFrontOriginAccessIdentityResource, S3CanonicalUserId]

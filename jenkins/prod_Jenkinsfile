@@ -25,7 +25,7 @@ node('linux') {
             sh "sls deploy -v --stage prod" // Values: dev, non_prod and prod
          }
          withSonarQubeEnv('sonarqube') {
-            // TODO sh 'sonar-scanner -Dsonar.projectKey=andino-flex-mailer -Dsonar.projectName=andino-flex-mailer -Dsonar.projectVersion=0.0.1 -Dsonar.sources=src'
+            // TODO sh 'sonar-scanner -Dsonar.projectKey=any-project -Dsonar.projectName=any-project -Dsonar.projectVersion=0.0.1 -Dsonar.sources=src'
          }   
    }
 
